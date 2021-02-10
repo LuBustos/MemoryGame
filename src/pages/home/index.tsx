@@ -1,7 +1,8 @@
+import { RouteComponentProps } from 'react-router-dom';
 import "./Home.css";
 
-const Home = (props:any) => {
-    console.log(props)
+const Home = ({history}:RouteComponentProps ) => {
+    console.log(history)
   return (
     <div className="Home">
       <header className="Home-header">
@@ -14,7 +15,7 @@ const Home = (props:any) => {
           <option>Normal</option>
           <option>Dificil</option>
         </select>
-        <button>Comenzar</button>
+        <button onClick={() => history.push("/Game")}>Comenzar</button>
       </header>
     </div>
   );
