@@ -1,8 +1,15 @@
+import { useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import "./Home.css";
 
 const Home = ({history}:RouteComponentProps ) => {
-    console.log(history)
+  const [difficulty,settDifficulty] = useState<string | null>(null);
+
+  const handleDifficulty = (e:React.ChangeEvent<HTMLSelectElement>) => {
+    const value : string = e.currentTarget.value;
+    settDifficulty(value)
+  }
+
   return (
     <div className="Home">
       <header className="Home-header">
@@ -10,12 +17,12 @@ const Home = ({history}:RouteComponentProps ) => {
           The memory game
         </p>
           <hr className={"Home-hr "} />
-        <select>
+        <select onChange={handleDifficulty}>
           <option>Facil</option>
           <option>Normal</option>
           <option>Dificil</option>
         </select>
-        <button onClick={() => history.push("/Game")}>Comenzar</button>
+        <button onClick={() => history.push("/Game",difficulty)}>Comenzar</button>
       </header>
     </div>
   );

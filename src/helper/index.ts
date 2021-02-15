@@ -1,0 +1,1 @@
+export const print = (value:any) => console.log(value)
