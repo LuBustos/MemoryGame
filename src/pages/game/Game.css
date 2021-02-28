@@ -2,13 +2,26 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   font-size: calc(40px + 2vmin);
   color: white;
 }
 
 .Game {
   text-align: center;
+}
+
+.Game-images {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  max-width: 50%;
+}
+
+.Game-list{
+  list-style: none;
+  padding: 10;
+  margin: 10;
 }

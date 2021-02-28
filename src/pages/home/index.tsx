@@ -18,9 +18,9 @@ const Home = ({history}:RouteComponentProps ) => {
         </p>
           <hr className={"Home-hr "} />
         <select onChange={handleDifficulty}>
-          <option>Facil</option>
+          <option>Easy</option>
           <option>Normal</option>
-          <option>Dificil</option>
+          <option>Hard</option>
         </select>
         <button onClick={() => history.push("/Game",difficulty)}>Comenzar</button>
       </header>
