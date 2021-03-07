@@ -22,3 +22,15 @@
 .Home-text {
   margin: 0;
 }
+
+.Button {
+  color: #ff8000;
+  background-color: #282c34;
+  border: 1px solid #ff8000;
+  padding: 12px 30px 12px 30px;
+  border-radius: 5%;
+}
+
+.Button:hover {
+  background-color: #333842;
+}

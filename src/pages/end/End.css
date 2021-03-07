@@ -1,4 +1,4 @@
-.Game-header {
+.End-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -9,21 +9,8 @@
   color: white;
 }
 
-.Game {
+.End {
   text-align: center;
-}
-
-.Game-images {
-  display: flex;
-  flex-grow: 1;
-  flex-wrap: wrap;
-  max-width: 50%;
-}
-
-.Game-list{
-  list-style: none;
-  padding: 10;
-  margin: 10;
 }
 
 .Button {
@@ -36,9 +23,4 @@
 
 .Button:hover {
   background-color: #333842;
-}
-.Div-button {
-  position: absolute;
-  left: 10px;
-  top:  0;
 }

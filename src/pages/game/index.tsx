@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import Title from "../../components/Title";
-import { print } from "../../helper";
 import {
   C,
   Card,
@@ -49,7 +48,6 @@ function shuffleArray(array: ImagesProps[], difficulty: unknown) {
   const firstArray = [];
   let i = array.length - 1;
   let min: number = 0;
-  console.log(difficulty,Difficulty.Easy)
   if (difficulty === Difficulty.Easy) {
     min = 8;
   } else if (difficulty === Difficulty.Normal) {
@@ -68,7 +66,7 @@ function shuffleArray(array: ImagesProps[], difficulty: unknown) {
   return firstArray.concat(firstArray);
 }
 
-const Game = ({ location }: RouteComponentProps) => {
+const Game = ({ location,history }: RouteComponentProps) => {
   const [selectedCard, setSelectedCar] = useState<{
     src: string | null;
     index: number;
@@ -77,10 +75,13 @@ const Game = ({ location }: RouteComponentProps) => {
     update: boolean;
     value: string | null;
   }>({ update: false, value: "" });
-  const [showCard, setShowCard] = useState({ show: false, index: 0 });
   const difficulty = location.state;
-  const imagesArrayRef = useRef(shuffleArray(images, difficulty));
-  print(imagesArrayRef.current);
+  const imagesArrayRef = useRef(shuffleArray(images, difficulty)); // Podemos meterlo dentro de un customhook
+  const [showCard, setShowCard] = useState({ show: false, index: 0 });
+  // const [attempts,setAttempts] = useState<number>(0);
+  const arrayEmpty = 0;
+  let count = 0;
+  
 
   useEffect(() => {
     if (update.update) {
@@ -102,16 +103,27 @@ const Game = ({ location }: RouteComponentProps) => {
           alert("PERFECTO!");
           setUpdate({ update: true, value: src });
         } else {
-          alert("Error!");
+          count = count +1;
+          console.log(count);
+          // setAttempts(count);
+          alert("Nope!");
         }
       }, 200);
       setSelectedCar({ src: null, index: 0 });
     }
   };
 
+  if(imagesArrayRef.current.length === arrayEmpty){
+      history.push("/End");
+  }
+
+
   return (
     <div className={"Game"}>
       <header className={"Game-header"}>
+        <div className={"Div-button"}>
+        <button className={"Button"} onClick={() => history.goBack()}>Volver</button>
+        </div>
         <Title title={"Memory game"} />
         <div className={"Game-images"}>
           {imagesArrayRef.current.map((x: ImagesProps, index) => {
